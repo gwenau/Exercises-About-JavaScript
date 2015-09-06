@@ -3,8 +3,9 @@
   <title>Questions</title>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
   <script type="text/javascript" src="js/angular_directives.js"></script>
+
 </head>
-<body>
+<body onload="bodyOnloadHandler()">
   <div ng-controller="JsController">
     <p>Purchase Id: {{ total.id }}</p>
     <p>Type: {{ total.purchase_type }}</p>
@@ -21,15 +22,15 @@
       >
     </div>
     <script type="text/javascript">
-      window.ICX = window.ICX || {};
-      window.onload = (function () {
+      function bodyOnloadHandler() {
         var confirmation = window.document.getElementById('purchase');
         ICX.price = confirmation.dataset.price; //enter price in 0.00 format
         ICX.purchase_id = confirmation.dataset.purchaseId; //Confirmation ID
         ICX.sku = confirmation.dataset.purchaseId + "%7cpb%3d%7ccnt%3d" + confirmation.dataset.itemsLength; //List of SKUs, comma separated
         ICX.pageAction = "6243";
         console.log(ICX.price, ICX.purchase_id, ICX.sku);
-      })();
+        console.log("body onload");
+      }
     </script>
   </div>
 </body>
