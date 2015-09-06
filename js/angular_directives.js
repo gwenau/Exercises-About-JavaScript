@@ -7,7 +7,9 @@
     $scope.total = {
       id: 12321,
       purchase_type: "Gift",
-      recipient_name: "Andy"
+      recipient_name: "Andy",
+      price: 400,
+      total_length: 1
     }
 
   }])

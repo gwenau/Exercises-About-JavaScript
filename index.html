@@ -5,14 +5,32 @@
   <script type="text/javascript" src="js/angular_directives.js"></script>
 </head>
 <body>
-  <div class="container">
-    <div class="row">
-      <div ng-controller="JsController">
-        <p>Purchase Id: {{ total.id }}</p>
-        <p>Type: {{ total.purchase_type }}</p>
-        <p>Recipient: {{ total.recipient_name }}</p>
-      </div>
+  <div ng-controller="JsController">
+    <p>Purchase Id: {{ total.id }}</p>
+    <p>Type: {{ total.purchase_type }}</p>
+    <p>Recipient: {{ total.recipient_name }}</p>
+    <div style="display: hidden;"
+      id="{{total.id}}"
+      data>
     </div>
+    <div style="display: none;" 
+      id="purchase"
+      data-purchase-id="{{total.id}}" 
+      data-price="{{total.price / 100}}"
+      data-items-length="{{total.total_length}}"
+      >
+    </div>
+    <script type="text/javascript">
+      window.ICX = window.ICX || {};
+      window.onload = (function () {
+        var confirmation = window.document.getElementById('purchase');
+        ICX.price = confirmation.dataset.price; //enter price in 0.00 format
+        ICX.purchase_id = confirmation.dataset.purchaseId; //Confirmation ID
+        ICX.sku = confirmation.dataset.purchaseId + "%7cpb%3d%7ccnt%3d" + confirmation.dataset.itemsLength; //List of SKUs, comma separated
+        ICX.pageAction = "6243";
+        console.log(ICX.price, ICX.purchase_id, ICX.sku);
+      })();
+    </script>
   </div>
 </body>
 </html>
