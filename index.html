@@ -23,13 +23,13 @@
     </div>
     <script type="text/javascript">
       function bodyOnloadHandler() {
+        window.ICX = window.ICX || {};
         var confirmation = window.document.getElementById('purchase');
         ICX.price = confirmation.dataset.price; //enter price in 0.00 format
         ICX.purchase_id = confirmation.dataset.purchaseId; //Confirmation ID
         ICX.sku = confirmation.dataset.purchaseId + "%7cpb%3d%7ccnt%3d" + confirmation.dataset.itemsLength; //List of SKUs, comma separated
         ICX.pageAction = "6243";
         console.log(ICX.price, ICX.purchase_id, ICX.sku);
-        console.log("body onload");
       }
     </script>
   </div>
