@@ -1,1 +1,18 @@
-index.html
+<html ng-app="jsApp">
+<head>
+  <title>Questions</title>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+  <script type="text/javascript" src="js/angular_directives.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div ng-controller="JsController">
+        <p>Purchase Id: {{ total.id }}</p>
+        <p>Type: {{ total.purchase_type }}</p>
+        <p>Recipient: {{ total.recipient_name }}</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
